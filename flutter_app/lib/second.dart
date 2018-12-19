@@ -181,135 +181,146 @@ class _CounterState extends State<Counter> {
   bool offstage = false;
   @override
   Widget build(BuildContext context) {
-    Widget column1 = Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            Expanded(
-              child: RaisedButton(
-                onPressed: _increment,
-                child: Text("Row.Button"),
-                color: Colors.red,
-                padding: EdgeInsets.all(20.0),
-              ),
-              flex: 1,
-            ),
-            Expanded(
-              child: Text('Count: $_counter'),
-              flex: 2,
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.blue,
-                padding: EdgeInsets.all(8.0),
+    Widget column1 = Container(
+      color: Colors.white,
+      margin: EdgeInsets.fromLTRB(0, 30.0, 0, 0),
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Expanded(
                 child: RaisedButton(
-                  onPressed: () {
-                    print("点击蓝色_容器块");
-                  },
-                  color: Colors.orange,
-                  child: Text("蓝色区域块"),
+                  onPressed: _increment,
+                  child: Text("Row.Button",style: TextStyle(fontSize: 13.0,color: Colors.white),),
+                  color: Colors.red,
+                  padding: EdgeInsets.all(10.0),
                 ),
+                flex: 1,
               ),
-              flex: 1,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Text("IIIII"),
-            )
-          ],
-        ),
-
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          verticalDirection: VerticalDirection.down,
-          children: <Widget>[
-            Offstage(
-              offstage: offstage,
-              child: Text("OffstageState"),
-            ),
-
-            RaisedButton(
-              color: Colors.cyanAccent,
-              child: Text("点击切换state"),
-              onPressed:_RaisedState,
-            ),
-
-            Icon(
-              Icons.star,
-              color: Colors.purple,
-            )
-          ],
-        ),
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            buildButtonColumn(Icons.call, 'CALL'),
-            buildButtonColumn(Icons.near_me, 'ROUTE'),
-            buildButtonColumn(Icons.share, 'SHARE'),
-          ],
-        ),
-
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Stack(
-              alignment: Alignment(0.6, 0.6),
-              fit: StackFit.loose,
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundImage:  NetworkImage(
-                      "http://h.hiphotos.baidu.com/zhidao/wh%3D450%2C600/"
-                          "sign=0d023672312ac65c67506e77cec29e27/9f2f070828381f30dea167bbad014c086e06f06c.jpg"),
-                  radius: 80.0,
+              Expanded(
+                child: Text('Count: $_counter',style: TextStyle(fontSize: 15.0,color: Colors.red,inherit: false),),
+                flex: 2,
+              ),
+              Expanded(
+                child: Container(
+                  color: Colors.blue,
+                  padding: EdgeInsets.all(3.0),
+                  child: RaisedButton(
+                    onPressed: () {
+                      print("点击蓝色_容器块");
+                    },
+                    color: Colors.orange,
+                    child: Text("蓝色区域块",style: TextStyle(fontSize: 12.0),),
+                  ),
                 ),
+                flex: 1,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Text("IIIII",style: TextStyle(fontSize: 12.0,inherit: false),),
+              )
+            ],
+          ),
 
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.transparent
-                  ),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            verticalDirection: VerticalDirection.down,
+            children: <Widget>[
+              Offstage(
+                offstage: offstage,
+                child: Text("OffstageState",style: TextStyle(fontSize: 20.0,color: Colors.red,inherit: false),),
+              ),
 
-                  child: Text(
-                    "Name",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.red
-                    ),
-                  ),
-                )
-              ],
-            ),
+              RaisedButton(
+                color: Colors.cyanAccent,
+                child: Text("点击切换state"),
+                onPressed:_RaisedState,
+              ),
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IndexedStack(
-                index: 1,//显示chlid 第几个元素
+              Icon(
+                Icons.star,
+                color: Colors.purple,
+              )
+            ],
+          ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              buildButtonColumn(Icons.call, 'CALL'),
+              buildButtonColumn(Icons.near_me, 'ROUTE'),
+              buildButtonColumn(Icons.share, 'SHARE'),
+            ],
+          ),
+
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              Stack(
                 alignment: Alignment(0.6, 0.6),
+                fit: StackFit.loose,
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: NetworkImage("http://h.hiphotos.baidu.com/zhidao/wh%3D450%2C600/"
-                        "sign=0d023672312ac65c67506e77cec29e27/9f2f070828381f30dea167bbad014c086e06f06c.jpg"),
-                    radius: 50.0,
+                    backgroundImage:  NetworkImage(
+                        "http://h.hiphotos.baidu.com/zhidao/wh%3D450%2C600/"
+                            "sign=0d023672312ac65c67506e77cec29e27/9f2f070828381f30dea167bbad014c086e06f06c.jpg"),
+                    radius: 80.0,
                   ),
 
                   Container(
                     decoration: BoxDecoration(
-                      color: Colors.red
+                        color: Colors.transparent
                     ),
 
-                    child: Text("age",
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.blue
+                    child: Text(
+                      "Name",
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.red
+                          ,inherit: false
                       ),
                     ),
                   )
                 ],
               ),
-            ),
-          ],
-        )
-      ],
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IndexedStack(
+                  index: 1,//显示chlid 第几个元素
+                  alignment: Alignment(0.6, 0.6),
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundImage: NetworkImage("http://h.hiphotos.baidu.com/zhidao/wh%3D450%2C600/"
+                          "sign=0d023672312ac65c67506e77cec29e27/9f2f070828381f30dea167bbad014c086e06f06c.jpg"),
+                      radius: 50.0,
+                    ),
+
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red
+                        ),
+
+                        child: Text("go back",
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.blue,
+                            inherit: false
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
     return column1;
   }
@@ -342,7 +353,8 @@ class _CounterState extends State<Counter> {
             style: TextStyle(
                 fontSize: 12.0,
                 fontWeight: FontWeight.w400,
-                color: color
+                color: color,
+                inherit: false
             ),),
         )
       ],

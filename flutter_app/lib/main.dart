@@ -3,10 +3,12 @@ import 'second.dart';
 import 'gridviewtest.dart';
 import 'tableLayout.dart';
 import 'WrapTest.dart';
+import 'listViewtest.dart';
 void main() {
   runApp(MaterialApp(
     title: "Flutter Tutorial",
     home: TutorialHome(),
+//    theme: TargetPlatform.iOS,
   ));
 }
 
@@ -26,16 +28,50 @@ class TutorialHome extends StatelessWidget {
               icon: Icon(Icons.search), tooltip: "search", onPressed: null)
         ],
       ),
-      body: Column(
-        children: <Widget>[
+//      body: WrapDemo(),
+
+     body: Container(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            RaisedButton(
+                child: Text("基本Widget",style: TextStyle(fontSize: 20.0,color: Colors.red),),
+                color: Colors.white,
+                onPressed: (){
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>Counter()));
+                }),
+            RaisedButton(
+                child: Text("表格TabWidget",style: TextStyle(fontSize: 20.0,color: Colors.red),),
+                color: Colors.white,
+                onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>FlowDemo()));
+                }),
+            RaisedButton(
+                child: Text("GridViewWidget",style: TextStyle(fontSize: 20.0,color: Colors.red),),
+                color: Colors.white,
+                onPressed: (){
+                  Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>MyGridView()));
+                }),
+            RaisedButton(
+                child: Text("ListViewWidget",style: TextStyle(fontSize: 20.0,color: Colors.red),),
+                color: Colors.white,
+                onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>ListTestDemo()));
+                }),
 //          Counter(),
 //          MyGridView(),
 //          FlowDemo(),
-          WrapDemo(),
-        ],
+//          WrapDemo(),
+          ],
+        ),
       ),
 
-//      Counter(),
       floatingActionButton: FloatingActionButton(
           tooltip: "Add", child: Icon(Icons.add), onPressed: null),
     );

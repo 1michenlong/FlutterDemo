@@ -52,20 +52,23 @@ Widget _gridView2(){
 
 //滚动效果的ScrollView
 Widget _gridView3(){
-  Widget scrollview = CustomScrollView(
-    primary: false,
-    shrinkWrap: true,
-    slivers: <Widget>[
-      SliverPadding(
-          sliver: SliverGrid.count(
-            //横轴数量 这里的横轴就是x轴 因为方向是垂直的时候 主轴是垂直的
-             crossAxisCount: 4,
-            crossAxisSpacing: 20.0,
-            children: adapterItem(4),
-          ),
-          padding: EdgeInsets.all(10.0))
-    ],
-  );
+  Widget scrollview = Container(
+   color: Colors.white,
+   child: CustomScrollView(
+      primary: false,
+      shrinkWrap: true,
+      slivers: <Widget>[
+        SliverPadding(
+            sliver: SliverGrid.count(
+              //横轴数量 这里的横轴就是x轴 因为方向是垂直的时候 主轴是垂直的
+               crossAxisCount: 4,
+              crossAxisSpacing: 20.0,
+              children: adapterItem(50),
+            ),
+            padding: EdgeInsets.all(10.0))
+      ],
+    ),
+ );
 
   return scrollview;
 }
@@ -99,11 +102,13 @@ List<Container> adapterItem(int count){
   return List.generate(
       count,
       (index) => Container(
+        alignment: Alignment.center,
         child: Text(
           "Item=="+index.toString(),
           style: TextStyle(
             fontSize: 20.0,
-            color: Colors.red
+            color: Colors.red,
+            inherit: false
           ),),
       )
   );
