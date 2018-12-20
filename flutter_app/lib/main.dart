@@ -1,15 +1,29 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'second.dart';
-import 'gridviewtest.dart';
-import 'tableLayout.dart';
-import 'WrapTest.dart';
-import 'listViewtest.dart';
+import 'package:flutter_app/pages/second.dart';
+import 'package:flutter_app/pages/gridviewtest.dart';
+import 'package:flutter_app/pages/tableLayout.dart';
+import 'package:flutter_app/pages/WrapTest.dart';
+import 'package:flutter_app/pages/listViewtest.dart';
+import 'package:flutter_app/pages/homepage/home_page.dart';
 void main() {
   runApp(MaterialApp(
     title: "Flutter Tutorial",
+//    home: HomePageWidget(),
     home: TutorialHome(),
 //    theme: TargetPlatform.iOS,
   ));
+
+  var bicycle=Bicycle(20,30);
+  print(bicycle._speed);
+
+  print(Rectangle(origin:Point(0.0, 1.0),width: 100).width);
+
+  var ksf_egg=createNoodlerFactory(1);
+  print("康师傅加蛋=="+(ksf_egg.noodlesPrice).toString());
+
+  var ty_sausage=createNoodlerFactory(2);
+  print("统一加火腿肠=="+(ty_sausage.noodlesPrice).toString());
 }
 
 class TutorialHome extends StatelessWidget {
@@ -63,6 +77,13 @@ class TutorialHome extends StatelessWidget {
                 onPressed: (){
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context)=>ListTestDemo()));
+                }),
+            RaisedButton(
+                child: Text("HomePageWidget",style: TextStyle(fontSize: 20.0,color: Colors.red),),
+                color: Colors.white,
+                onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>HomePageWidget()));
                 }),
 //          Counter(),
 //          MyGridView(),
@@ -261,3 +282,67 @@ class TutorialHome extends StatelessWidget {
 //    );
 //  }
 //}
+
+class Bicycle{
+  int candle;
+  int name;
+  int _speed;
+
+  int get speed => _speed;
+
+//  Bicycle(int candles,int speed){
+//    this.candles=candles;
+//    this.speed=speed;
+//  }
+
+  //跟上面效果一样
+  Bicycle(this.candle,this._speed);
+}
+
+class Rectangle {
+  int width;
+  int height;
+  Point origin;
+
+  //构造重载方式
+  Rectangle({this.origin = const Point(0, 0), this.width = 0, this.height = 0});
+}
+
+//工厂模式
+ abstract class INoodles{
+   //面价
+   final double noodlerPrice = 3.9;
+   /**
+    * 价格
+    */
+   double get noodlesPrice;
+ }
+
+ class KSFNoodles extends INoodles{
+  //面条配料  蛋
+  int egg;
+  KSFNoodles(this.egg);
+  @override
+  double get noodlesPrice => egg*3.2*noodlerPrice;
+ }
+
+ class TYNoodles extends INoodles{
+   //面条配料  火腿肠
+   int sausage;
+   TYNoodles(this.sausage);
+  @override
+  double get noodlesPrice => sausage*5.5*noodlerPrice;
+ }
+
+INoodles createNoodlerFactory(int type){
+  //康师傅
+  final int KSFnoodler = 1;
+  //统一
+  final int TYnoodler = 2;
+  if(type==KSFnoodler){
+    return KSFNoodles(2);
+  }else if(type==TYnoodler){
+    return TYNoodles(3);
+  }
+}
+
