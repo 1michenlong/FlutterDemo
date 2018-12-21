@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_app/pages/homepage/other_page.dart';
 import 'package:flutter_app/pages/homepage/tab1_page.dart';
+import 'package:flutter_app/pages/news/News.dart';
 
 class HomePageWidget extends StatefulWidget{
   String pageType;
@@ -18,12 +19,12 @@ class _HomePage extends State<HomePageWidget>{
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.menu),
-            tooltip: "Native meum",
-            onPressed: (){
-                print("menu");
-            },),
+//          leading: IconButton(
+//            icon: Icon(Icons.menu),
+//            tooltip: "Native meum",
+//            onPressed: (){
+//                print("menu");
+//            },),
           title: Text("AppBar.title"),
           bottom: TabBar(tabs:<Widget>[
             Tab(child:
@@ -106,6 +107,9 @@ class _HomePage extends State<HomePageWidget>{
                 leading: Icon(Icons.ac_unit),
                 title: Text("third_page"),
                 onTap: (){
+                  Navigator.of(context).pop();  //点击后收起侧边栏
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>News(data: "newsList",)));
                   print("third_page_click");
                 },
               ),
