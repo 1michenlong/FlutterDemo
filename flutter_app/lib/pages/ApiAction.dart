@@ -42,6 +42,37 @@ class ApiAction {
     }
   }
 
+  static Future<List> HYget() async {
+    var httpClient = new HttpClient();
+    var request = await httpClient.getUrl(Uri.parse("http://www.wanandroid.com/project/list/1/json?cid=1"));
+    var response = await request.close();
+    if(response.statusCode==200){
+      var  responseBody = await response.transform(utf8.decoder).join();
+      var convertDataToJson = json.decode(responseBody)["data"]["datas"];
+      return convertDataToJson;
+    }
+//    http.Response response=await http.get("http://www.wanandroid.com/project/list/1/json?cid=1");
+//    var convertDataToJson = json.decode(response.body)["data"]["datas"];
+//    print(convertDataToJson);
+//    return convertDataToJson;
+  }
+//  static String HYget(String url,Map<String, String> params,)async{
+//    try {
+//      var httpClient = new HttpClient();
+//      var request = await httpClient.getUrl(Uri.parse(url));
+//      var response = await request.close();
+//      if(response.statusCode==200){
+//          var  responseBody = await response.transform(utf8.decoder).join();
+//          var jsonResult = json.decode(responseBody);
+//          return jsonResult.toString();
+//      }else{
+//        throw("error code=="+response.statusCode.toString());
+//      }
+//    } catch (e) {
+//        throw e;
+//    }
+//  }
+
   static void post(Function callback,
       {Map<String, String> params, Function errorCallback}) async {
     try {
@@ -58,6 +89,12 @@ class ApiAction {
         errorCallback(e);
       }
     }
+  }
+
+  static Future<String> post2(Map<String, String> params) async {
+    http.Response res = await http.post(ApiManage.baseUrl, body: params);
+    print("res.body==" + (res.body));
+    return res.body;
   }
 
   static void yMpost(String url, Function callback,

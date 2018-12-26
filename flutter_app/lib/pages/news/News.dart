@@ -45,33 +45,6 @@ class _News extends State<News> with SingleTickerProviderStateMixin{
   }
   @override
   Widget build(BuildContext context) {
-    Map<String,String> mMap = new Map();
-    mMap["v"] = "1.0";
-    mMap["month"] = "7";
-    mMap["day"] = "25";
-    mMap["key"] = "bd6e35a2691ae5bb8425c8631e475c2a";
-
-//    HttpController.post("http://api.juheapi.com/japi/toh", (data){
-//      if(null!=data){
-//        final body = data.toString();
-//        print("body=="+body);
-//
-//      }
-//    },params: mMap);
-
-    ApiAction.post((data){
-      if(null!=data){
-        final body = json.decode(data.toString());
-        print("body=="+body);
-        final feeds = body["result"];
-        var items = [];
-//        feeds.forEach((item) {
-//          items.add(Model(item["_id"], item["title"], item["pic"], item["year"],
-//              item["month"], item["day"], item["des"], item["lunar"]));
-//        });
-      }
-    },params: mMap);
-
     return Scaffold(
       appBar: AppBar(
         title: TabBar(
@@ -110,6 +83,7 @@ class NewsList extends StatefulWidget{
 class _NewsList extends State<NewsList>{
   @override
   Widget build(BuildContext context) {
+
     return Center(
       child: Text(widget.newsType,style: TextStyle(fontSize: 25.0,color: Colors.red,inherit: false),),
     );

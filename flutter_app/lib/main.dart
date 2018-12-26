@@ -6,6 +6,7 @@ import 'package:flutter_app/pages/tableLayout.dart';
 import 'package:flutter_app/pages/WrapTest.dart';
 import 'package:flutter_app/pages/listViewtest.dart';
 import 'package:flutter_app/pages/homepage/home_page.dart';
+import 'package:flutter_app/pages/newList/NewList.dart';
 void main() {
   runApp(MaterialApp(
     title: "Flutter Tutorial",
@@ -76,7 +77,8 @@ class TutorialHome extends StatelessWidget {
                 color: Colors.white,
                 onPressed: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context)=>ListTestDemo()));
+//                      MaterialPageRoute(builder: (context)=>ListTestDemo()));
+                      MaterialPageRoute(builder: (context)=>NewList()));
                 }),
             RaisedButton(
                 child: Text("HomePageWidget",style: TextStyle(fontSize: 20.0,color: Colors.red),),
