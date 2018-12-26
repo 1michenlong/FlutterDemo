@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/ApiAction.dart';
+import 'dart:convert';
+import 'package:convert/convert.dart';
+import 'package:crypto/crypto.dart';
+import 'package:http/http.dart' as http;
+import 'dart:io';
 
 class News extends StatefulWidget{
   String data;
@@ -11,6 +17,7 @@ class News extends StatefulWidget{
 }
 
 class _News extends State<News> with SingleTickerProviderStateMixin{
+
   List<NewsTab> myTabs = <NewsTab>[
     NewsTab("头条",NewsList(newsType: 'toutiao')),
     NewsTab('社会',NewsList(newsType: 'shehui')),
@@ -38,6 +45,33 @@ class _News extends State<News> with SingleTickerProviderStateMixin{
   }
   @override
   Widget build(BuildContext context) {
+    Map<String,String> mMap = new Map();
+    mMap["v"] = "1.0";
+    mMap["month"] = "7";
+    mMap["day"] = "25";
+    mMap["key"] = "bd6e35a2691ae5bb8425c8631e475c2a";
+
+//    HttpController.post("http://api.juheapi.com/japi/toh", (data){
+//      if(null!=data){
+//        final body = data.toString();
+//        print("body=="+body);
+//
+//      }
+//    },params: mMap);
+
+    ApiAction.post((data){
+      if(null!=data){
+        final body = json.decode(data.toString());
+        print("body=="+body);
+        final feeds = body["result"];
+        var items = [];
+//        feeds.forEach((item) {
+//          items.add(Model(item["_id"], item["title"], item["pic"], item["year"],
+//              item["month"], item["day"], item["des"], item["lunar"]));
+//        });
+      }
+    },params: mMap);
+
     return Scaffold(
       appBar: AppBar(
         title: TabBar(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/pages/ApiAction.dart';
 
 import 'package:flutter_app/pages/homepage/other_page.dart';
 import 'package:flutter_app/pages/homepage/tab1_page.dart';
@@ -19,12 +20,15 @@ class _HomePage extends State<HomePageWidget>{
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-//          leading: IconButton(
-//            icon: Icon(Icons.menu),
-//            tooltip: "Native meum",
-//            onPressed: (){
-//                print("menu");
-//            },),
+          leading: Builder(builder: (BuildContext context){
+            return IconButton(
+              icon: Icon(Icons.star),
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              onPressed: (){
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          }),
           title: Text("AppBar.title"),
           bottom: TabBar(tabs:<Widget>[
             Tab(child:

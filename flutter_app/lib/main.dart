@@ -83,7 +83,7 @@ class TutorialHome extends StatelessWidget {
                 color: Colors.white,
                 onPressed: (){
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context)=>HomePageWidget("main")));
+                      MaterialPageRoute(builder: (context)=> HomePageWidget("main")));
                 }),
 //          Counter(),
 //          MyGridView(),
