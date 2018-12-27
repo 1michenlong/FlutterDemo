@@ -194,7 +194,7 @@ class _CounterState extends State<Counter> {
               Expanded(
                 child: RaisedButton(
                   onPressed: _increment,
-                  child: Text("Row.Button"+widget.data,style: TextStyle(fontSize: 13.0,color: Colors.white),),
+                  child: Text("Row.Button",style: TextStyle(fontSize: 13.0,color: Colors.white),),
                   color: Colors.red,
                   padding: EdgeInsets.all(10.0),
                 ),
